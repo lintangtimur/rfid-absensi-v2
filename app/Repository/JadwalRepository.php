@@ -35,7 +35,13 @@ class JadwalRepository
         }
     }
 
-    public function checkRfid($data)
+    /**
+     * Undocumented function
+     *
+     * @param string $data
+     * @return App\Siswa
+     */
+    public function checkRfid($data) : Siswa
     {
         //cek apakah rfid tersebut ada dalam DB
         return $this->siswa->where("rfid","=",$data)->first();
