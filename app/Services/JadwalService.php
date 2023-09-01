@@ -33,7 +33,17 @@ class JadwalService
     private function __getTime($hari, $waktuPeriksa)
     {
         $res = $this->jadwalRepository->getTimeByDay($hari, $waktuPeriksa);
-        
+
         return $res;
+    }
+
+    public function findJadwalById($id)
+    {
+        return $this->jadwalRepository->getId($id);
+    }
+
+    public function update($data)
+    {
+        return $this->jadwalRepository->update($data);
     }
 }

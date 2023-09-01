@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\JadwalPostRequest;
+use App\Http\Requests\UpdateJadwalRequest;
 use App\Models\Jadwal;
 use App\Services\JadwalService;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class JadwalController extends Controller
         "senin","selasa","rabu","kamis","jumat","sabtu"
     ];
 
-    protected $jadwalService;
+    protected JadwalService $jadwalService;
 
     public function __construct(JadwalService $jadwalService)
     {
@@ -72,17 +73,28 @@ class JadwalController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Jadwal $jadwal)
+    public function edit($id)
     {
-        //
+        $jadwal = $this->jadwalService->findJadwalById($id);
+        $hari = JadwalController::HARI;
+
+        return view("jadwal.edit", compact("jadwal", 'hari'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Jadwal $jadwal)
+    public function update(UpdateJadwalRequest $updateJadwalRequest)
     {
-        //
+        $attr = $updateJadwalRequest->validated();
+        
+        $updated = $this->jadwalService->update($attr);
+
+        if($updated){
+            return redirect()->route("jadwal")->with("msg","jadwal berhasil dirubah");
+        }
+
+        return redirect()->route("jadwal")->with("error","jadwal siswa gagal dirubah");
     }
 
     /**

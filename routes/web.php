@@ -28,3 +28,4 @@ Route::post("siswa/update", [SiswaController::class, "update"])->name("siswa.upd
 Route::get("jadwal",[JadwalController::class, "index"])->name("jadwal");
 Route::post("jadwal/post", [JadwalController::class, "store"])->name("jadwal.add");
 Route::get("jadwal/{id}", [JadwalController::class, "edit"])->name("jadwal.edit")->middleware("signed");
+Route::post("jadwal/update", [JadwalController::class, "update"])->name("jadwal.update");

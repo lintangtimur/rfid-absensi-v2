@@ -41,5 +41,16 @@ class JadwalRepository
             
         return $data;
     }
+
+    public function getId($id)
+    {
+        return $this->jadwal->where("id","=",$id)->first();
+    }
     
+    public function update($data)
+    {
+        $s = $this->jadwal->where("id","=",$data["jadwal_id"])->first();
+
+        return $s->update($data);
+    }
 }
