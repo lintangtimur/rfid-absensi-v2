@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "@eonasdan/tempus-dominus": "^6.7.13",
-        "@popperjs/core": "^2.11.8"
+        "@popperjs/core": "^2.11.8",
+        "jquery": "^3.7.1"
     }
 }
