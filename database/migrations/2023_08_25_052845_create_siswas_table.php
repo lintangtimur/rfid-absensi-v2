@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('siswas', function (Blueprint $table) {
             $table->id();
-            $table->string("rfid", 15);
-            $table->string("nama", 20);
+            $table->string("rfid", 50);
+            $table->string("nama", 50);
             $table->string("nim",20);
             $table->timestamps();
         });
