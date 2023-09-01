@@ -20,26 +20,20 @@ class JadwalService
 
     public function checkTimeAvailability($attr)
     {
-        // Waktu yang ingin Anda periksa
-        $waktuPeriksa = Carbon::createFromFormat('H:i:s', $attr['jam_mulai']); // Ganti dengan waktu yang ingin diperiksa
-
-        $res = $this->__getTime($attr['hari']);
-
-        // Rentang waktu
-        $waktuMulai = Carbon::createFromFormat('H:i:s', $res->jam_mulai); // Ganti dengan waktu mulai rentang
-        $waktuAkhir = Carbon::createFromFormat('H:i:s', $res->jam_akhir); // Ganti dengan waktu akhir rentang
-
-        // Memeriksa apakah waktu periksa berada dalam rentang
-        if ($waktuPeriksa->between($waktuMulai, $waktuAkhir)) {
+        $res = $this->__getTime($attr['hari'], $attr['jam_mulai']);
+     
+        if($res){
             return true;
-        } else {
-            return false;
         }
+
+        return false;
+        
     }
 
-    private function __getTime($hari)
+    private function __getTime($hari, $waktuPeriksa)
     {
-        $res = $this->jadwalRepository->getTimeByDay($hari);
+        $res = $this->jadwalRepository->getTimeByDay($hari, $waktuPeriksa);
+        
         return $res;
     }
 }

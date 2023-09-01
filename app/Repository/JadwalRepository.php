@@ -31,9 +31,12 @@ class JadwalRepository
         }
     }
 
-    public function getTimeByDay($hari)
+    public function getTimeByDay($hari, $waktuPeriksa)
     {
-        $data = $this->jadwal->where("hari",'=',$hari)->first();
+        $data = $this->jadwal->where("hari",'=',$hari)
+            ->whereTime("jam_akhir","<=", $waktuPeriksa)
+            ->first();
+        
         return $data;
     }
     
