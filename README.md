@@ -4,5 +4,5 @@
 ```
 git clone https://github.com/lintangtimur/rfid-absensi-v2.git
 composer install
-php artisan migrate
+php artisan migrate:fresh --seed
 ```
