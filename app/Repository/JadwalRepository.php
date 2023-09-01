@@ -3,16 +3,20 @@
 namespace App\Repository;
 
 use App\Models\Jadwal;
+use App\Models\Siswa;
 use Illuminate\Support\Facades\DB;
 
 class JadwalRepository
 {
     protected Jadwal $jadwal;
+    protected Siswa $siswa;
 
     public function __construct(
         Jadwal $jadwal,
+        Siswa $siswa
     ) {
         $this->jadwal = $jadwal; 
+        $this->siswa = $siswa;
     }
 
     public function insert($attr)
@@ -29,6 +33,12 @@ class JadwalRepository
 
             return $e;
         }
+    }
+
+    public function checkRfid($data)
+    {
+        //cek apakah rfid tersebut ada dalam DB
+        return $this->siswa->where("rfid","=",$data)->first();
     }
 
     public function getTimeByDay($hari, $waktuPeriksa)

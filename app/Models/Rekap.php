@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Rekap extends Model
 {
     use HasFactory;
+    
+    protected $table = "rekaps";
+    protected $guarded = ['id'];
 }

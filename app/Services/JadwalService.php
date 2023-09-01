@@ -13,6 +13,16 @@ class JadwalService
         $this->jadwalRepository = $jadwalRepository;
     }
 
+    public function checkRfid($data)
+    {
+        return $this->jadwalRepository->checkRfid($data);
+    }
+
+    public function homepage($hari, $waktu)
+    {
+        return $this->jadwalRepository->getTimeByDay($hari, $waktu);
+    }
+
     public function addJadwal($attr)
     {
         return $this->jadwalRepository->insert($attr);

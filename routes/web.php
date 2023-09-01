@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
@@ -15,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-    // return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('index');
+//     // return view('welcome');
+// });
 
 Route::get("siswa", [SiswaController::class, "index"])->name("siswa");
 Route::post("siswa/post", [SiswaController::class, "store"])->name("siswa.add");
@@ -29,3 +30,6 @@ Route::get("jadwal",[JadwalController::class, "index"])->name("jadwal");
 Route::post("jadwal/post", [JadwalController::class, "store"])->name("jadwal.add");
 Route::get("jadwal/{id}", [JadwalController::class, "edit"])->name("jadwal.edit")->middleware("signed");
 Route::post("jadwal/update", [JadwalController::class, "update"])->name("jadwal.update");
+
+
+Route::get("/", [HomepageController::class, "index"])->name("homepage");
