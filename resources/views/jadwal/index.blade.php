@@ -54,6 +54,7 @@
             @php
 $heads = [
     'Hari',
+    'Makul',
     'Jam mulai',
     ['label' => 'Jam Akhir', 'width' => 40],
     ['label' => 'Actions', 'no-export' => true, 'width' => 10],
@@ -66,6 +67,7 @@ $heads = [
     @foreach ($jadwals as $item)
     <tr>
         <td>{{$item->hari}}</td>
+        <td>{{$item->makul}}</td>
         <td>{{$item->jam_mulai}}</td>
         <td>{{$item->jam_akhir}}</td>
         <td><a href="{{URL::signedRoute("jadwal.edit", $item->id)}}" class="btn btn-primary">Edit</a></td>
